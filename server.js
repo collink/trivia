@@ -1,5 +1,7 @@
 const app = require('express')();
+// noinspection JSValidateTypes
 const server = require('http').Server(app);
+// noinspection JSValidateTypes
 const io = require('socket.io')(server);
 const next = require('next');
 

@@ -1,6 +1,6 @@
 import { InMemoryCache, gql } from '@apollo/client'
 import React from 'react'
-import Index from '../pages'
+import Index2 from '../pages/index2'
 import renderer from 'react-test-renderer'
 import { MockedProvider } from '@apollo/client/testing'
 
@@ -25,11 +25,11 @@ cache.writeQuery({
   },
 })
 
-describe('Index', () => {
+describe('Index2', () => {
   it('renders the html we want', async () => {
     const component = renderer.create(
       <MockedProvider cache={cache}>
-        <Index />
+        <Index2 />
       </MockedProvider>
     )
     expect(component.toJSON()).toMatchSnapshot()

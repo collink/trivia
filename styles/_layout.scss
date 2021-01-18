@@ -1,0 +1,13 @@
+.app-container {
+  background-color: var(--backgroundColor);
+  height: 100vh;
+  overflow-y: auto;
+
+  > * {
+    height: 100%;
+  }
+
+  * {
+    color: var(--textColor);
+  }
+}

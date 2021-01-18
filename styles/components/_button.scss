@@ -1,0 +1,19 @@
+.button {
+  border-radius: var(--borderRadius);
+  line-height: 40px;
+  background-color: var(--buttonBackgroundColor);
+  color: var(--buttonTextColor);
+  cursor: pointer;
+  border: none;
+  transition: 50ms all;
+  text-transform: uppercase;
+
+  &:focus {
+    outline: none;
+  }
+
+  &[color=accent] {
+    --buttonBackgroundColor: var(--accentColor);
+    --buttonTextColor: var(--accentContrastColor);
+  }
+}
