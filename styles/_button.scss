@@ -1,0 +1,58 @@
+.button {
+  border-radius: var(--borderRadius);
+  line-height: 40px;
+  background-color: var(--buttonBackgroundColor);
+  color: var(--buttonTextColor);
+  cursor: pointer;
+  border: none;
+  transition: 50ms all;
+  text-transform: uppercase;
+  height: 40px;
+  box-sizing: border-box;
+
+  &:disabled {
+    opacity: .5;
+    cursor: default;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &[color=accent] {
+    --buttonBackgroundColor: var(--accentColor);
+    --buttonTextColor: var(--accentContrastColor);
+  }
+
+  &.left-arrow, &.right-arrow {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+
+    &::before, &::after {
+      content: '';
+      display: inline-block;
+    }
+
+    &::before {
+      border: 8px solid transparent;
+      border-left: none;
+      border-right: 10px solid var(--accentContrastColor);
+      margin-left: -2px;
+    }
+
+    &::after {
+      background-color: var(--accentContrastColor);
+      height: 6px;
+      width: 10px;
+      margin: 4px 0;
+    }
+  }
+
+  &.right-arrow {
+    transform: rotate(180deg);
+  }
+}

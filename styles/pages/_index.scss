@@ -15,21 +15,6 @@
     flex-direction: column;
   }
 
-  .room-code {
-    box-sizing: border-box;
-    font-size: 24px;
-    padding: 10px 20px;
-    text-align: center;
-    border-radius: var(--borderRadius);
-    border: 1px solid var(--lineColor);
-    background-color: var(--inputColor);
-    text-transform: uppercase;
-
-    &:focus {
-      outline-color: var(--lineColor);
-    }
-  }
-
   .button {
     margin-top: 10px;
   }

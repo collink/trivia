@@ -1,0 +1,42 @@
+.new-game-page {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .new-game-form {
+    border: 1px solid var(--lineColor);
+    border-radius: var(--borderRadius);
+    padding: 20px;
+    min-width: 400px;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      text-align: center;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .new-game-settings {
+      section {
+        + section {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    .team-count, .create-button-section {
+      display: flex;
+      justify-content: center;
+    }
+
+    #num-teams {
+      width: 50px;
+      margin: 0 10px;
+    }
+  }
+}
