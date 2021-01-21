@@ -1,7 +1,7 @@
 type Query {
-  viewer: User!
+  game(id: ID!): Game!
 }
 
 type Mutation {
-  updateName(name: String!): User!
+  createGame(numTeams: Int!): Game!
 }

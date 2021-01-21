@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
-import { initializeApollo } from '../lib/apollo';
-import { ViewerDocument } from '../lib/viewer.graphql';
+import { useRouter } from 'next/router';
+
+import { useCreateGameMutation } from '../lib/game.graphql';
 
 const NewGame = () => {
+    const router = useRouter();
     const [ numTeams, setNumTeams ] = useState<number>(2);
+    const [ createGameMutation ] = useCreateGameMutation();
+
 
     const createGame = async () => {
+        console.log(numTeams);
 
+        const { data } = await createGameMutation({
+            variables: {
+                numTeams
+            }
+        });
+
+        const { createGame: game } = data;
+
+        await router.push(`/game/${game.id}`);
     };
 
     return <div className="new-game-page">
@@ -18,36 +32,22 @@ const NewGame = () => {
                     <label>How many teams?</label>
                     <div className="team-count">
                         <button type="button" color="accent" className="button left-arrow"
-                                disabled={numTeams === 2}
-                                onClick={() => setNumTeams(numTeams - 1 > 2 ? numTeams - 1 : 2)} />
+                                disabled={ numTeams === 2 }
+                                onClick={ () => setNumTeams(numTeams - 1 > 2 ? numTeams - 1 : 2) }/>
 
-                        <input id="num-teams" readOnly={true} value={ numTeams } />
+                        <input id="num-teams" readOnly={ true } value={ numTeams }/>
 
                         <button type="button" color="accent" className="button right-arrow"
-                                disabled={numTeams === 4}
-                                onClick={() => setNumTeams(numTeams + 1 < 4 ? numTeams + 1 : 4)} />
+                                disabled={ numTeams === 4 }
+                                onClick={ () => setNumTeams(numTeams + 1 < 4 ? numTeams + 1 : 4) }/>
                     </div>
                 </section>
                 <section className="create-button-section">
-                    <button type="button" color="accent" className="button" onClick={createGame}>Create Game</button>
+                    <button type="button" color="accent" className="button" onClick={ createGame }>Create Game</button>
                 </section>
             </div>
         </form>
     </div>;
-};
-
-export const getStaticProps = async () => {
-    const apolloClient = initializeApollo()
-
-    await apolloClient.query({
-        query: ViewerDocument,
-    })
-
-    return {
-        props: {
-            initialApolloState: apolloClient.cache.extract(),
-        },
-    }
 };
 
 export default NewGame;
