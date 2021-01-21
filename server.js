@@ -24,6 +24,7 @@ nextApp
     .prepare()
     .then(() => {
         app.get('*', (req, res) => nextHandler(req, res));
+        app.post('*', (req, res) => nextHandler(req, res));
 
         server.listen(PORT, err => {
            if (err) {

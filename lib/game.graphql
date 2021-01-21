@@ -1,0 +1,15 @@
+query Game($id: ID!) {
+  game(id: $id) {
+    id
+    namespace,
+    numTeams
+  }
+}
+
+mutation CreateGame($numTeams: Int!) {
+  createGame(numTeams: $numTeams) {
+    id,
+    namespace,
+    numTeams
+  }
+}
